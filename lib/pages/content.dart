@@ -57,8 +57,7 @@ class _ContentState extends State<Content> {
 
   @override
   Widget build(BuildContext context) {
-
-    //create new instance of DatabaseHelper class 
+    //create new instance of DatabaseHelper class
     db = new DatabaseHelper();
 
     //receive data from Toc page through the context object
@@ -69,39 +68,65 @@ class _ContentState extends State<Content> {
     // print('data: ${data['header']}');
 
     return Scaffold(
-        backgroundColor: Colors.grey[50],
-        appBar: AppBar(
-          backgroundColor: Colors.blue[900],
-          title: Text(dataFromToc['header']),
-          centerTitle: true,
+      backgroundColor: Colors.amber[100],
+      appBar: AppBar(
+        backgroundColor: Colors.amber,
+        title: Text(
+          dataFromToc['header'],
+          style: TextStyle(
+            fontFamily: 'Oregano',
+            fontWeight: FontWeight.w800,
+            fontSize: 23.0,
+            color: Colors.orange[900],
+          ),
         ),
-        body: Container(
-          child: Column(
-            children: <Widget>[
-              SizedBox(height: 10.0),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-                child: Center(
-                  child: Text(dataFromToc['textInside'],
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontWeight: FontWeight.bold)),
+        centerTitle: true,
+      ),
+      body: Container(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            SizedBox(height: 10.0),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+              child: Center(
+                child: Text(
+                  dataFromToc['textInside'],
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontFamily: 'AveriaGruesaLibre',
+                    fontWeight: FontWeight.bold,
+                    fontStyle: FontStyle.italic,
+                    fontSize: 17.0,
+                    color: Colors.redAccent[700],
+                  ),
                 ),
               ),
-              SizedBox(height: 20),
-              RaisedButton(
-                onPressed: () {
-                  navigateToNote();
-                },
-                child: Text('MORE'),
-              ),
-            ],
+            ),
+            SizedBox(height: 20),
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+          navigateToNote();
+        },
+        label: Text(
+          'ADD NOTE',
+          style: TextStyle(
+            fontFamily: 'AveriaGruesaLibre',
+            fontWeight: FontWeight.bold,
+            fontSize: 20.0,
           ),
-        ));
+        ),
+        icon: Icon(Icons.note_add),
+        backgroundColor: Colors.orange[900],
+      ),
+    );
   }
 
   @override
   void dispose() {
-    
     //close database
     db.close();
     super.dispose();
