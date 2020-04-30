@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:shimmer/shimmer.dart';
 
 class Welcome extends StatefulWidget {
   @override
@@ -16,21 +17,26 @@ class _WelcomeState extends State<Welcome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.blue[900],
+        backgroundColor: Colors.amber,
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            SpinKitPouringHourglass(
+            SpinKitWave(
               color: Colors.white,
-              size: 60.0,
+              size: 50.0,
             ),
             SizedBox(height: 40.0),
-            Text(
-              'LEARN GIT',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-                fontSize: 20,
+            Shimmer.fromColors(
+              baseColor: Colors.white,
+              highlightColor: Colors.red,
+              child: Text(
+                'Learn GIT',
+                style: TextStyle(
+                  fontFamily: 'Aquire-BW0ox',
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                  fontSize: 50,
+                ),
               ),
             ),
           ],

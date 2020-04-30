@@ -13,17 +13,16 @@ class Note extends StatefulWidget {
 }
 
 class _NoteState extends State<Note> {
-
   //reference to DatabaseHelper class
   DatabaseHelper db;
-  
+
   //data received from Content page
   Map data = {};
 
   //value of rating
   double rating = 0.0;
 
-  //note 
+  //note
   String note = '';
 
   //to controll text editor
@@ -100,8 +99,9 @@ class _NoteState extends State<Note> {
     Fluttertoast.showToast(
       msg: message,
       toastLength: Toast.LENGTH_SHORT,
-      backgroundColor: Colors.red,
+      backgroundColor: Colors.redAccent,
       textColor: Colors.white,
+      fontSize: 18.0,
       gravity: ToastGravity.BOTTOM,
     );
   }
@@ -114,7 +114,6 @@ class _NoteState extends State<Note> {
 
   @override
   Widget build(BuildContext context) {
-    
     if (data.isNotEmpty) {
       data = data;
     } else {
@@ -126,22 +125,36 @@ class _NoteState extends State<Note> {
     }
 
     return Scaffold(
-      backgroundColor: Colors.grey[200],
+      backgroundColor: Colors.amber[100],
       appBar: AppBar(
-        backgroundColor: Colors.blue[900],
-        title: Text('Note'),
+        backgroundColor: Colors.amber,
+        title: Text(
+          'Note',
+          style: TextStyle(
+            fontFamily: 'Oregano',
+            fontWeight: FontWeight.w800,
+            fontSize: 25.0,
+            color: Colors.orange[900],
+          ),
+        ),
         centerTitle: true,
-        elevation: 0,
       ),
       body: Container(
         child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+          child: Wrap(
+            spacing: 10,
+            // mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextField(
-                    decoration: InputDecoration(hintText: 'Add Note...'),
+                    decoration: InputDecoration(
+                      hintText: 'Type Here...',
+                      hintStyle: TextStyle(
+                        fontSize: 18.0,
+                        fontFamily: 'AveriaGruesaLibre',
+                      ),
+                    ),
                     onSubmitted: (String str) {
                       setState(() {
                         note = str;
@@ -150,19 +163,33 @@ class _NoteState extends State<Note> {
                     },
                     controller: controller),
               ),
-              SizedBox(height: 10),
-              Text(note),
-              SizedBox(height: 10),
+              SizedBox(height: 30),
+              Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Text(
+                    note,
+                    maxLines: 5,
+                    style: TextStyle(
+                      fontFamily: 'AveriaGruesaLibre',
+                      fontWeight: FontWeight.bold,
+                      fontStyle: FontStyle.italic,
+                      fontSize: 17.0,
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(height: 30),
               Center(
                   child: SmoothStarRating(
                 rating: rating,
-                size: 50,
+                size: 40,
                 filledIconData: Icons.star,
                 halfFilledIconData: Icons.star_half,
                 defaultIconData: Icons.star_border,
                 starCount: 5,
-                // color: Colors.redAccent,
-                // borderColor: Colors.black,
+                color: Colors.amber,
+                borderColor: Colors.redAccent,
                 allowHalfRating: false,
                 spacing: 2.0,
                 onRatingChanged: (value) {
@@ -171,29 +198,60 @@ class _NoteState extends State<Note> {
                   });
                 },
               )),
-              SizedBox(height: 10),
+              SizedBox(height: 30),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
                     RaisedButton(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30)),
+                      color: Colors.green,
+                      hoverColor: Colors.orange,
                       onPressed: () {
                         addRecord(data['id']);
                       },
-                      child: Text('ADD'),
+                      child: Text(
+                        'ADD',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18.0,
+                          color: Colors.white,
+                        ),
+                      ),
                     ),
                     RaisedButton(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30)),
+                      color: Colors.yellow[700],
                       onPressed: () {
                         updateRecord(data['id']);
                       },
-                      child: Text('UPDATE'),
+                      child: Text(
+                        'UPDATE',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18.0,
+                          color: Colors.white,
+                        ),
+                      ),
                     ),
                     RaisedButton(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30)),
+                      color: Colors.pink,
                       onPressed: () {
                         deleteRecord(data['id']);
                       },
-                      child: Text('DELETE'),
+                      child: Text(
+                        'DELETE',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18.0,
+                          color: Colors.white,
+                        ),
+                      ),
                     ),
                   ],
                 ),
