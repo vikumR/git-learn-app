@@ -101,7 +101,7 @@ class _NoteState extends State<Note> {
       toastLength: Toast.LENGTH_SHORT,
       backgroundColor: Colors.redAccent,
       textColor: Colors.white,
-      fontSize: 21.0,
+      fontSize: 18.0,
       gravity: ToastGravity.BOTTOM,
     );
   }
@@ -129,7 +129,7 @@ class _NoteState extends State<Note> {
       appBar: AppBar(
         backgroundColor: Colors.amber,
         title: Text(
-          'Note About Lesson',
+          'Note',
           style: TextStyle(
             fontFamily: 'Oregano',
             fontWeight: FontWeight.w800,
@@ -141,8 +141,9 @@ class _NoteState extends State<Note> {
       ),
       body: Container(
         child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+          child: Wrap(
+            spacing: 10,
+            // mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -163,27 +164,32 @@ class _NoteState extends State<Note> {
                     controller: controller),
               ),
               SizedBox(height: 30),
-              Text(
-                note,
-                maxLines: 5,
-                style: TextStyle(
-                  fontFamily: 'AveriaGruesaLibre',
-                  fontWeight: FontWeight.bold,
-                  fontStyle: FontStyle.italic,
-                  fontSize: 17.0,
+              Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Text(
+                    note,
+                    maxLines: 5,
+                    style: TextStyle(
+                      fontFamily: 'AveriaGruesaLibre',
+                      fontWeight: FontWeight.bold,
+                      fontStyle: FontStyle.italic,
+                      fontSize: 17.0,
+                    ),
+                  ),
                 ),
               ),
               SizedBox(height: 30),
               Center(
                   child: SmoothStarRating(
                 rating: rating,
-                size: 50,
+                size: 40,
                 filledIconData: Icons.star,
                 halfFilledIconData: Icons.star_half,
                 defaultIconData: Icons.star_border,
                 starCount: 5,
-                // color: Colors.redAccent,
-                // borderColor: Colors.black,
+                color: Colors.amber,
+                borderColor: Colors.redAccent,
                 allowHalfRating: false,
                 spacing: 2.0,
                 onRatingChanged: (value) {

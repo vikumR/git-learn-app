@@ -87,7 +87,6 @@ class _TocState extends State<Toc> {
               child: ListTile(
                 onTap: () {
                   navigateToContent(index);
-                  // print(allTexts[index].);
                 },
                 title: Text(
                   allTexts[index].header,
@@ -99,9 +98,6 @@ class _TocState extends State<Toc> {
                   ),
                   textAlign: TextAlign.center,
                 ),
-                // leading: CircleAvatar(
-                //
-                // )
               ),
             ),
           );

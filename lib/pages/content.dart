@@ -33,11 +33,6 @@ class _ContentState extends State<Content> {
     if (record != null) {
       var recordMap = new Texts.dbTexts(record.id, record.note, record.rating);
       Map map = recordMap.toMap();
-      // print('\n');
-      // print('record id: ${map['id']}');
-      // print('record note: ${map['note']}');
-      // print('record rating: ${map['rating']}');
-      // print('record record: $record');
       Navigator.pushNamed(context, '/note', arguments: {
         'id': map['id'],
         'note': map['note'],
@@ -64,8 +59,6 @@ class _ContentState extends State<Content> {
     dataFromToc = dataFromToc.isNotEmpty
         ? dataFromToc
         : ModalRoute.of(context).settings.arguments;
-    // final data = dataFromToc;
-    // print('data: ${data['header']}');
 
     return Scaffold(
       backgroundColor: Colors.amber[100],
@@ -82,31 +75,39 @@ class _ContentState extends State<Content> {
         ),
         centerTitle: true,
       ),
-      body: Container(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            SizedBox(height: 10.0),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-              child: Center(
-                child: Text(
-                  dataFromToc['textInside'],
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontFamily: 'AveriaGruesaLibre',
-                    fontWeight: FontWeight.bold,
-                    fontStyle: FontStyle.italic,
-                    fontSize: 17.0,
-                    color: Colors.redAccent[700],
+      body: LayoutBuilder(
+          builder: (BuildContext context, BoxConstraints viewportConstraints) {
+        return SingleChildScrollView(
+            child: ConstrainedBox(
+          constraints: BoxConstraints(
+            minHeight: viewportConstraints.maxHeight,
+          ),
+          child: Column(
+            // direction: Axis.horizontal,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              SizedBox(height: 10.0),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(10, 0, 10, 60),
+                child: Center(
+                  child: Text(
+                    dataFromToc['textInside'],
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontFamily: 'AveriaGruesaLibre',
+                      fontWeight: FontWeight.bold,
+                      fontStyle: FontStyle.italic,
+                      fontSize: 17.0,
+                      color: Colors.redAccent[700],
+                    ),
                   ),
                 ),
               ),
-            ),
-            SizedBox(height: 20),
-          ],
-        ),
-      ),
+              SizedBox(height: 20),
+            ],
+          ),
+        ));
+      }),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
           navigateToNote();
