@@ -1,9 +1,20 @@
+// IT17091626
+// P.G.C.B. Samarakoon
+// CTSE - SE4010
+// Flutter Mobile App - Assignment
+
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:learn_git_app/texts/progressModel.dart';
 import 'package:learn_git_app/pages/add_progress_dialog.dart';
 import 'package:learn_git_app/pages/progress_present.dart';
 
+// References using to implement this code is listed as below
+//
+// '''Developerlibs.com ; Flutter-sqlite Database Example'''
+// url : 'https://www.developerlibs.com/2018/07/flutter-sqlite-database-example.html'
+
+// Show list of added progress records
 class ProgressList extends StatelessWidget {
   List<ProgressModel> pr;
   ProgressPresent progressPresent;
@@ -79,10 +90,12 @@ class ProgressList extends StatelessWidget {
         });
   }
 
+  // Dispaly progress list after the uodating list view screen
   displayProgress() {
     progressPresent.updateScreen();
   }
 
+  // Show edit dialog
   edit(ProgressModel progress, BuildContext context) {
     showDialog(
       context: context,
