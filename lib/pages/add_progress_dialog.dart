@@ -1,8 +1,19 @@
+// IT17091626
+// P.G.C.B. Samarakoon
+// CTSE - SE4010
+// Flutter Mobile App - Assignment
+
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:learn_git_app/dbhelper/database_helper.dart';
 import 'package:learn_git_app/texts/progressModel.dart';
 
+// References using to implement this code is listed as below
+//
+// '''Developerlibs.com ; Flutter-sqlite Database Example'''
+// url : 'https://www.developerlibs.com/2018/07/flutter-sqlite-database-example.html'
+
+// Dialog box get user inputs to add new progress and edit details
 class AddProgressDialog {
   final teTopic = TextEditingController();
   final teDate = TextEditingController();
@@ -47,6 +58,7 @@ class AddProgressDialog {
     );
   }
 
+  /// Widget for make textfields
   Widget getTextArea(
       String inputBName, TextEditingController inputBController) {
     var loginBtn = Padding(
@@ -62,6 +74,7 @@ class AddProgressDialog {
     return loginBtn;
   }
 
+  /// Widget to make add an edit buttons
   Widget getbtn(String btnLabel, EdgeInsets margin) {
     var loginBtn = Container(
       margin: margin,
@@ -84,6 +97,7 @@ class AddProgressDialog {
     return loginBtn;
   }
 
+  /// Add and update records
   Future addProgress(bool isEdit) async {
     var db = new DatabaseHelper();
     var progress = new ProgressModel(teTopic.text, teDate.text);
