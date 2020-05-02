@@ -1,11 +1,21 @@
+// IT17091626
+// P.G.C.B. Samarakoon
+// CTSE - SE4010
+// Flutter Mobile App - Assignment
+
 import 'dart:async';
 import 'package:flutter/material.dart';
-//import 'package:learn_git_app/dbhelper/database_helper.dart';
 import 'package:learn_git_app/pages/progress_list.dart';
 import 'package:learn_git_app/texts/progressModel.dart';
 import 'package:learn_git_app/pages/add_progress_dialog.dart';
 import 'package:learn_git_app/pages/progress_present.dart';
 
+// References using to implement this code is listed as below
+//
+// '''Developerlibs.com ; Flutter-sqlite Database Example'''
+// url : 'https://www.developerlibs.com/2018/07/flutter-sqlite-database-example.html'
+
+// Main screen for displaying progress records and other related functionalities.
 class Progress extends StatefulWidget {
   @override
   _ProgressState createState() => _ProgressState();
@@ -20,6 +30,7 @@ class _ProgressState extends State<Progress> implements ProgressContract {
     progressPresent = new ProgressPresent(this);
   }
 
+  /// Display method for progress list
   displayProgress() {
     setState(() {});
   }
@@ -50,6 +61,8 @@ class _ProgressState extends State<Progress> implements ProgressContract {
           ),
         ],
       ),
+      
+      /// Dispaly list of records after adding to the databse
       body: FutureBuilder<List<ProgressModel>>(
         future: progressPresent.getProgress(),
         builder: (context, snapshot) {
@@ -65,6 +78,7 @@ class _ProgressState extends State<Progress> implements ProgressContract {
     );
   }
 
+  /// Make dialog box for add new progress record
   Future addProgressDialog() async {
     showDialog(
       context: context,
@@ -75,6 +89,7 @@ class _ProgressState extends State<Progress> implements ProgressContract {
     setState(() {});
   }
 
+  /// Update the screen after the adding new record
   @override
   void screenUpdate() {
     setState(() {});
