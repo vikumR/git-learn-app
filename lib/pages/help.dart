@@ -1,5 +1,10 @@
+// IT17091626
+// P.G.C.B. Samarakoon
+// CTSE - SE4010
+// Flutter Mobile App - Assignment
 import 'package:flutter/material.dart';
 
+// Page for list out user guide
 class Help extends StatefulWidget {
   @override
   _HelpState createState() => _HelpState();
