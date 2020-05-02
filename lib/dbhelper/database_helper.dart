@@ -6,14 +6,6 @@ import 'package:learn_git_app/texts/texts.dart';
 
 class DatabaseHelper {
 
-  // static final DatabaseHelper _instance = new DatabaseHelper.internal();
-
-  // factory DatabaseHelper() => _instance;
-
-  // static Database _db;
-
-  // DatabaseHelper.internal();
-
   final String tableLearnGit = 'learnGitTable';
   final String columnId = 'id';
   final String columnNote = 'note';
@@ -54,7 +46,7 @@ class DatabaseHelper {
     return result;
   }
 
-  // retrieve a record by id  
+  // retrieve a record by id
   Future<Texts> getNote(int id) async {
     var dbClient = await db;
     List<Map> result = await dbClient.query(tableLearnGit,
@@ -68,23 +60,26 @@ class DatabaseHelper {
     return null;
   }
 
-  // retrieve all records 
+  // retrieve all records
   Future<List> getAllNotes() async {
     var dbClient = await db;
-    var result = await dbClient.query(tableLearnGit, columns: [columnId, columnNote, columnRating]);
+    var result = await dbClient
+        .query(tableLearnGit, columns: [columnId, columnNote, columnRating]);
     return result.toList();
   }
 
   //delete record
   Future<int> deleteNote(int id) async {
     var dbClient = await db;
-    return await dbClient.delete(tableLearnGit, where: '$columnId = ?', whereArgs: [id]);
+    return await dbClient
+        .delete(tableLearnGit, where: '$columnId = ?', whereArgs: [id]);
   }
 
   //update record
   Future<int> updateNote(Texts textsObj) async {
     var dbClient = await db;
-    return await dbClient.update(tableLearnGit, textsObj.toMap(), where: "$columnId = ?", whereArgs: [textsObj.id]);
+    return await dbClient.update(tableLearnGit, textsObj.toMap(),
+        where: "$columnId = ?", whereArgs: [textsObj.id]);
   }
 
   // close database
@@ -92,5 +87,4 @@ class DatabaseHelper {
     var dbClient = await db;
     return dbClient.close();
   }
-
 }
