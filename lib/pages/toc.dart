@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:learn_git_app/pages/about.dart';
+import 'package:learn_git_app/pages/help.dart';
 import 'package:learn_git_app/pages/progress.dart';
 import 'package:learn_git_app/texts/texts.dart';
 
@@ -13,7 +13,6 @@ class _TocState extends State<Toc> {
   //navigate to content page with data retrieved for the respective id from database
   void navigateToContent(index) {
     Texts instance = allTexts[index];
-    // print(instance);
     Navigator.pushNamed(context, '/content', arguments: {
       'id': instance.id,
       'header': instance.header,
@@ -53,7 +52,7 @@ class _TocState extends State<Toc> {
               PopupMenuItem(
                 value: 2,
                 child: Text(
-                  'ABOUT',
+                  'HELP',
                   style: TextStyle(
                     fontFamily: 'AveriaGruesaLibre',
                     fontWeight: FontWeight.w800,
@@ -68,40 +67,43 @@ class _TocState extends State<Toc> {
                     MaterialPageRoute(builder: (context) => Progress()));
               } else if (menu == 2) {
                 Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => About()));
+                    context, MaterialPageRoute(builder: (context) => Help()));
               }
             },
           ),
         ],
       ),
-      body: ListView.builder(
-        itemCount: allTexts.length,
-        itemBuilder: (context, index) {
-          return Padding(
-            padding: EdgeInsets.fromLTRB(2.0, 2.0, 2.0, 2.0),
-            child: Card(
-              color: Colors.limeAccent,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(35.0),
-              ),
-              child: ListTile(
-                onTap: () {
-                  navigateToContent(index);
-                },
-                title: Text(
-                  allTexts[index].header,
-                  style: TextStyle(
-                    fontFamily: 'Oregano',
-                    fontWeight: FontWeight.w800,
-                    fontSize: 20.0,
-                    color: Colors.orange[900],
+      body: Padding(
+        padding: const EdgeInsets.fromLTRB(5.0, 8.0, 5.0, 5.0),
+        child: ListView.builder(
+          itemCount: allTexts.length,
+          itemBuilder: (context, index) {
+            return Padding(
+              padding: EdgeInsets.fromLTRB(2.0, 2.0, 2.0, 2.0),
+              child: Card(
+                color: Colors.limeAccent,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(35.0),
+                ),
+                child: ListTile(
+                  onTap: () {
+                    navigateToContent(index);
+                  },
+                  title: Text(
+                    allTexts[index].header,
+                    style: TextStyle(
+                      fontFamily: 'Oregano',
+                      fontWeight: FontWeight.w800,
+                      fontSize: 20.0,
+                      color: Colors.orange[900],
+                    ),
+                    textAlign: TextAlign.center,
                   ),
-                  textAlign: TextAlign.center,
                 ),
               ),
-            ),
-          );
-        },
+            );
+          },
+        ),
       ),
     );
   }
