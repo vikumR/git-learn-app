@@ -4,7 +4,7 @@ import 'package:learn_git_app/pages/toc.dart';
 import 'package:learn_git_app/pages/note.dart';
 import 'package:learn_git_app/pages/welcome.dart';
 import 'package:learn_git_app/pages/progress.dart';
-import 'package:learn_git_app/pages/about.dart';
+import 'package:learn_git_app/pages/help.dart';
 
 void main() => runApp(MaterialApp(
     initialRoute: '/welcome',
@@ -14,6 +14,6 @@ void main() => runApp(MaterialApp(
       '/content': (context) => Content(),
       '/note': (context) => Note(),
       '/progress': (context) => Progress(),
-      '/about': (context) => About(),
+      '/help': (context) => Help(),
     },
     debugShowCheckedModeBanner: false));

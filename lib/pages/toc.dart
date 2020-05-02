@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:learn_git_app/pages/about.dart';
+import 'package:learn_git_app/pages/help.dart';
 import 'package:learn_git_app/pages/progress.dart';
 import 'package:learn_git_app/texts/texts.dart';
 
@@ -52,7 +52,7 @@ class _TocState extends State<Toc> {
               PopupMenuItem(
                 value: 2,
                 child: Text(
-                  'ABOUT',
+                  'HELP',
                   style: TextStyle(
                     fontFamily: 'AveriaGruesaLibre',
                     fontWeight: FontWeight.w800,
@@ -67,7 +67,7 @@ class _TocState extends State<Toc> {
                     MaterialPageRoute(builder: (context) => Progress()));
               } else if (menu == 2) {
                 Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => About()));
+                    context, MaterialPageRoute(builder: (context) => Help()));
               }
             },
           ),
