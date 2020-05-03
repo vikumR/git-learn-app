@@ -14,6 +14,7 @@ import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 import 'package:learn_git_app/texts/texts.dart';
 
+//class: Database Helper
 class DatabaseHelper {
   final String tableLearnGit = 'learnGitTable';
   final String columnId = 'id';
