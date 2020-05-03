@@ -1,3 +1,10 @@
+/*
+Registration Number: IT17009164
+Name: Mahanthe V.R.B.
+References: 1. http://rogerdudler.github.io/git-guide/
+            2. https://grokonez.com/flutter/flutter-sqlite-example-crud-sqflite-example
+*/
+
 class Texts {
 //model class
 
