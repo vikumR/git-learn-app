@@ -1,3 +1,10 @@
+/*
+Registration Number: IT17009164
+Name: Mahanthe V.R.B.
+References: 1. https://flutter.dev/docs
+            2. www.youtube.com/watch?v=1ukSR1GRtMU&list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ
+*/
+
 import 'package:flutter/material.dart';
 import 'package:learn_git_app/pages/help.dart';
 import 'package:learn_git_app/pages/progress.dart';
