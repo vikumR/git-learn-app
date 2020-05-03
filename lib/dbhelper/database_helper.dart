@@ -1,3 +1,12 @@
+/*
+IT17009164-Mahanthe V.R.B.
+IT17091626-P.G.C.B. Samarakoon
+References: 1. https://flutter.dev/docs
+            2. www.youtube.com/watch?v=1ukSR1GRtMU&list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ
+            3. https://grokonez.com/flutter/flutter-sqlite-example-crud-sqflite-example
+*/
+
+
 import 'dart:async';
 
 import 'package:learn_git_app/texts/progressModel.dart';
